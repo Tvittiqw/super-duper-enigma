@@ -29,7 +29,7 @@ var allCategoriesUrl =
 var categoriesTitleHtml = "snippets/categories-title-snippet.html";
 var categoryHtml = "snippets/category-snippet.html";
 var menuItemsUrl =
-  "http://localhost:3000/api/meals";
+  "http://localhost:3000/api/meals/";
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
 
@@ -205,6 +205,7 @@ function buildMenuItemsViewHtml(categoryMenuItems,
 
   // Loop over menu items
   // var menuItems = categoryMenuItems.menu_items;
+  var menuItems = categoryMenuItems.menu_items;
   var catShortName = categoryMenuItems.category.short_name;
   for (var i = 0; i < menuItems.length; i++) {
     // Insert menu item values
@@ -263,7 +264,7 @@ function insertItemPrice(html,
     return insertProperty(html, pricePropName, "");;
   }
 
-  priceValue = "$" + priceValue.toFixed(2);
+  priceValue = "$" + parseFloat(priceValue).toFixed(2);
   html = insertProperty(html, pricePropName, priceValue);
   return html;
 }
