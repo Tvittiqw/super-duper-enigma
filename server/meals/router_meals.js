@@ -10,7 +10,7 @@ var Category = require('./../categories/model_category');
 router.get('/meals/:shortCategoryName', function(req, res) {
     var shortCategoryName = req.params.shortCategoryName;
     
-    Promise.all([Meals.find({short_name: new RegExp(shortCategoryName, "i")}), Category.findOne({short_name: shortCategoryName})])
+    Promise.all([Meals.find({short_name: new RegExp(shortCategoryName, "i")}), Category.find({short_name: new RegExp(shortCategoryName, "i")})])
         .then(([meals, category]) => {
 
             res.json({menu_items : meals, category : category});

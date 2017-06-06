@@ -22,9 +22,10 @@ app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });
 
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/mydb');
 
-mongoose.connection.on('connected', function () {  
-  // seed_categories();
+mongoose.connection.on('connected', function () { 
+   // seed_categories();
   // seed_meals();
 });

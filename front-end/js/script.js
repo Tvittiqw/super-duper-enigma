@@ -204,52 +204,70 @@ function buildMenuItemsViewHtml(categoryMenuItems,
   finalHtml += "<section class='row'>";
 
   // Loop over menu items
-  // var menuItems = categoryMenuItems.menu_items;
   var menuItems = categoryMenuItems.menu_items;
-  var catShortName = categoryMenuItems.category.short_name;
-  for (var i = 0; i < menuItems.length; i++) {
-    // Insert menu item values
-    var html = menuItemHtml;
-    html =
-      insertProperty(html, "short_name", menuItems[i].short_name);
-    html =
-      insertProperty(html,
-                     "catShortName",
-                     catShortName);
-    html =
-      insertItemPrice(html,
-                      "price_small",
-                      menuItems[i].price_small);
-    html =
-      insertItemPortionName(html,
-                            "small_portion_name",
-                            menuItems[i].small_portion_name);
-    html =
-      insertItemPrice(html,
-                      "price_large",
-                      menuItems[i].price_large);
-    html =
-      insertItemPortionName(html,
-                            "large_portion_name",
-                            menuItems[i].large_portion_name);
-    html =
-      insertProperty(html,
-                     "name",
-                     menuItems[i].name);
-    html =
-      insertProperty(html,
-                     "description",
-                     menuItems[i].description);
+  var catShortName = categoryMenuItems.category;
+  
 
-    // Add clearfix after every second menu item
-    if (i % 2 != 0) {
-      html +=
-        "<div class='clearfix visible-lg-block visible-md-block'></div>";
+  for(var j = 0; j < catShortName.length; j++) {
+    
+    catShortName = categoryMenuItems.category[j].short_name;
+    
+                            
+
+        for (var i = 0; i < menuItems.length; i++) {
+            // Insert menu item values
+            var html = menuItemHtml;
+            html =
+            insertProperty(html, 
+                            "short_name",
+                            menuItems[i].short_name);
+           
+           if(catShortName.substring(0, 1) == menuItems[i].short_name.substring(0,1)) {
+
+            html =
+            insertProperty(html,
+                            "catShortName",
+                            catShortName);
+            
+            
+            
+            html =
+            insertItemPrice(html,
+                            "price_small",
+                            menuItems[i].price_small);
+            html =
+            insertItemPortionName(html,
+                                    "small_portion_name",
+                                    menuItems[i].small_portion_name);
+            html =
+            insertItemPrice(html,
+                            "price_large",
+                            menuItems[i].price_large);
+            html =
+            insertItemPortionName(html,
+                                    "large_portion_name",
+                                    menuItems[i].large_portion_name);
+            html =
+            insertProperty(html,
+                            "name",
+                            menuItems[i].name);
+            html =
+            insertProperty(html,
+                            "description",
+                            menuItems[i].description);
+            
+           }
+            // Add clearfix after every second menu item
+            if (i % 2 != 0) {
+            html +=
+                "<div class='clearfix visible-lg-block visible-md-block'></div>";
+            }
+
+            finalHtml += html;
+        }
+        catShortName = categoryMenuItems.category;
     }
-
-    finalHtml += html;
-  }
-
+  
   finalHtml += "</section>";
   return finalHtml;
 }
