@@ -222,7 +222,7 @@ function buildMenuItemsViewHtml(categoryMenuItems,
                             "short_name",
                             menuItems[i].short_name);
            
-           if(catShortName.substring(0, 1) == menuItems[i].short_name.substring(0,1)) {
+
 
             html =
             insertProperty(html,
@@ -256,7 +256,7 @@ function buildMenuItemsViewHtml(categoryMenuItems,
                             "description",
                             menuItems[i].description);
             
-           }
+           
             // Add clearfix after every second menu item
             if (i % 2 != 0) {
             html +=
